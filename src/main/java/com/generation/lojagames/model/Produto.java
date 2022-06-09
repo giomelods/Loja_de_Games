@@ -19,99 +19,112 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "tb_produtos")
 public class Produto {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
- private Long id;
- 
-@NotBlank(message= "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
-@Size(min=5 , max=40, message = "O atributo aceita no minimo 5 e no máximo 40 caracteres")
-private String nome;
- 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-@NotNull(message= "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
-@Digits(integer=3,fraction=2,message="Apenas centenas e 2 casas após o ponto.")
-private BigDecimal preco;
- 
-@NotBlank(message= "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
-@Size(min=5 , max=40, message = "O atributo aceita no minimo 5 e no máximo 40 caracteres")
-private String descricao;
- 
-@NotBlank(message= "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
-@Size(min=5 , max=40, message = "O atributo aceita no minimo 5 e no máximo 40 caracteres")
- private String plataforma;
- 
-@NotNull(message= "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
- private int quantidade;
- 
- @NotBlank(message= "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
- @Size(min=5 , max=40, message = "O atributo aceita no minimo 5 e no máximo 40 caracteres")
- private String foto;
+	@NotBlank(message = "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
+	@Size(min = 5, max = 40, message = "O atributo aceita no minimo 5 e no máximo 40 caracteres")
+	private String nome;
 
- @ManyToOne
- @JsonIgnoreProperties("Produto")
- private Categoria categoria ;
- 
-public Long getId() {
-	return id;
-}
+	@NotNull(message = "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
+	@Digits(integer = 3, fraction = 2, message = "Apenas centenas e 2 casas após o ponto.")
+	private BigDecimal preco;
 
-public void setId(Long id) {
-	this.id = id;
-}
+	@NotBlank(message = "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
+	@Size(min = 5, max = 40, message = "O atributo aceita no minimo 5 e no máximo 40 caracteres")
+	private String descricao;
 
-public String getNome() {
-	return nome;
-}
+	@NotBlank(message = "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
+	@Size(min = 5, max = 40, message = "O atributo aceita no minimo 5 e no máximo 40 caracteres")
+	private String plataforma;
 
-public void setNome(String nome) {
-	this.nome = nome;
-}
+	@NotNull(message = "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
+	private int quantidade;
 
-public BigDecimal getPreco() {
-	return preco;
-}
+	@NotBlank(message = "O atributo é de preenchimento obrigatório e não pode ser deixado em branco")
+	@Size(min = 5, max = 40, message = "O atributo aceita no minimo 5 e no máximo 40 caracteres")
+	private String foto;
 
-public void setPreco(BigDecimal preco) {
-	this.preco = preco;
-}
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Categoria categoria;
 
-public String getDescricao() {
-	return descricao;
-}
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
 
-public void setDescricao(String descricao) {
-	this.descricao = descricao;
-}
+	public Long getId() {
+		return id;
+	}
 
-public String getPlataforma() {
-	return plataforma;
-}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-public void setPlataforma(String plataforma) {
-	this.plataforma = plataforma;
-}
+	public String getNome() {
+		return nome;
+	}
 
-public int getQuantidade() {
-	return quantidade;
-}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-public void setQuantidade(int quantidade) {
-	this.quantidade = quantidade;
-}
+	public BigDecimal getPreco() {
+		return preco;
+	}
 
-public String getFoto() {
-	return foto;
-}
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
 
-public void setFoto(String foto) {
-	this.foto = foto;
-}
+	public String getDescricao() {
+		return descricao;
+	}
 
-public Produto getCategoria() {
-	// TODO Auto-generated method stub
-	return null;
-}
- 
- 
- 
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getPlataforma() {
+		return plataforma;
+	}
+
+	public void setPlataforma(String plataforma) {
+		this.plataforma = plataforma;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 }
